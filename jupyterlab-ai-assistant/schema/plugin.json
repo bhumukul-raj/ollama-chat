@@ -1,22 +1,37 @@
 {
-  "jupyter.lab.setting-icon-class": "jp-NotebookIcon",
-  "jupyter.lab.setting-icon-label": "AI Assistant",
-  "title": "AI Assistant",
-  "description": "Settings for the JupyterLab AI Assistant",
+  "jupyter.lab.toolbars": {
+    "Cell": [
+      {
+        "name": "askAI",
+        "command": "ai-assistant:analyze-cell",
+        "rank": 10
+      }
+    ]
+  },
+  "jupyter.lab.transform": true,
+  "title": "JupyterLab AI Assistant",
+  "description": "Settings for the JupyterLab AI Assistant extension",
   "type": "object",
   "properties": {
-    "ollama_base_url": {
+    "defaultModel": {
       "type": "string",
-      "title": "Ollama API URL",
-      "description": "The base URL for the Ollama API",
-      "default": "http://localhost:11434"
+      "title": "Default model",
+      "description": "The default model to use for AI assistance",
+      "default": "llama3.1:8b"
     },
-    "default_model": {
-      "type": "string",
-      "title": "Default Model",
-      "description": "The default model to use",
-      "default": "llama2"
+    "maxResponseTokens": {
+      "type": "integer",
+      "title": "Maximum response tokens",
+      "description": "Maximum number of tokens to generate in responses",
+      "default": 2048
+    },
+    "temperature": {
+      "type": "number",
+      "title": "Temperature",
+      "description": "The temperature used for generation (higher = more creative, lower = more deterministic)",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 0.7
     }
-  },
-  "additionalProperties": false
+  }
 } 

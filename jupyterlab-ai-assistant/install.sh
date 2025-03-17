@@ -58,12 +58,15 @@ echo "Installing extension in development mode..."
 pip install -e .
 
 # Link the extension for development
-echo "Linking the extension for development..."
-jupyter labextension develop --overwrite .
+#echo "Linking the extension for development..."
+#jupyter labextension develop --overwrite .
 
 # Build JupyterLab with the extension
 echo "Building JupyterLab with the extension..."
 jupyter lab build
+
+echo "Listing JupyterLab extensions..."
+jupyter labextension list
 
 echo "Installation complete!"
 echo "To use the extension:"

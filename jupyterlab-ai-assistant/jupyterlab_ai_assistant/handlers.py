@@ -168,14 +168,19 @@ class OllamaCellContextHandler(OllamaBaseHandler):
                 {"role": "user", "content": f"{question}:\n\n{cell_content}"}
             ]
             
-            # Get response from Ollama
-            response = self.ollama_client.chat_completion(
-                model=model,
-                messages=messages,
-                stream=False
-            )
+            # Use the direct API call approach to avoid generator serialization issues
+            url = f"{self.ollama_client.base_url}/api/chat"
+            payload = {
+                "model": model,
+                "messages": messages,
+                "stream": False
+            }
             
-            self.finish(json.dumps(response))
+            response = requests.post(url, json=payload)
+            response.raise_for_status()
+            result = response.json()
+            
+            self.finish(json.dumps(result))
                 
         except Exception as e:
             self.set_status(500)

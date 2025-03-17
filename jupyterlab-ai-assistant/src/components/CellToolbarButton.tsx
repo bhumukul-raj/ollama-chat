@@ -45,7 +45,17 @@ const CellContextMenu: React.FC<CellContextMenuProps> = ({
         question
       );
 
-      setResult(response.message?.content || 'No response from AI');
+      // Extract content from the response, handling both response formats
+      if (response.message?.content) {
+        // Old format
+        setResult(response.message.content);
+      } else if (response.response) { 
+        // New direct API format
+        setResult(response.response);
+      } else {
+        // Fallback
+        setResult(JSON.stringify(response, null, 2));
+      }
     } catch (error) {
       console.error('Error analyzing cell:', error);
       setResult('Error: Failed to analyze cell content');
