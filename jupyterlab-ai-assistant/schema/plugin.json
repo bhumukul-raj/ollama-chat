@@ -1,0 +1,22 @@
+{
+  "jupyter.lab.setting-icon-class": "jp-NotebookIcon",
+  "jupyter.lab.setting-icon-label": "AI Assistant",
+  "title": "AI Assistant",
+  "description": "Settings for the JupyterLab AI Assistant",
+  "type": "object",
+  "properties": {
+    "ollama_base_url": {
+      "type": "string",
+      "title": "Ollama API URL",
+      "description": "The base URL for the Ollama API",
+      "default": "http://localhost:11434"
+    },
+    "default_model": {
+      "type": "string",
+      "title": "Default Model",
+      "description": "The default model to use",
+      "default": "llama2"
+    }
+  },
+  "additionalProperties": false
+} 
